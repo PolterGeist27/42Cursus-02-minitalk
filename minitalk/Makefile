@@ -5,6 +5,9 @@ DIRINCS = ./includes/
 
 DIRLIB = ./libft/
 
+SRC = server.c \
+      client.c \
+
 SRCS = $(addprefix ${DIRSRC}, $(addsuffix .c, ${SRC}))
 
 OBJS = $(SRCS:.c=.o)
@@ -19,7 +22,7 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make bonus -C $(DIRLIB)
+	$(MAKE) -C $(DIRLIB)
 	cp $(DIRLIB)/$(NAMELIBFT) $(NAME)
 	$(LIBC) $(NAME) $(OBJS)
 

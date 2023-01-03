@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 09:36:42 by diogmart          #+#    #+#             */
-/*   Updated: 2023/01/03 13:43:15 by diogmart         ###   ########.fr       */
+/*   Created: 2022/11/02 15:33:33 by diogmart          #+#    #+#             */
+/*   Updated: 2022/11/03 14:21:05 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include "libft/includes/libft.h"
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[30] = "Hello World!";
+	printf("User: %d\n", ft_strlen(str));
+	printf("System: %d\n", strlen(str));
+	return (0);	
+}
+*/

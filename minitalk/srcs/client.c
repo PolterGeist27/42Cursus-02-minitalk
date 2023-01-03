@@ -6,23 +6,23 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:35:14 by diogmart          #+#    #+#             */
-/*   Updated: 2023/01/03 10:42:22 by diogmart         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:36:36 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 /*
 TODO:
-	- Check if the first arg is a String of numbers
-	- Check if the second arg is a String
+	- Check if the first arg is a string of numbers
+	- Check if the second arg is a string
 	- Send the second arg to the server
 	- ...
 Bonus:
 	- Receive and handle the signal from the server
 */
 
-void	handler();
+// Use only SIGUSR1 and SIGUSR2
 
 int	main(int argc, char **argv)
 {
