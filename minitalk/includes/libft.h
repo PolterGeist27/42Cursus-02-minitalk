@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:39:07 by diogmart          #+#    #+#             */
-/*   Updated: 2023/01/03 13:43:03 by diogmart         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:41:42 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "get_next_line.h"
 # include "ftprintf.h"
 
 // libc functions

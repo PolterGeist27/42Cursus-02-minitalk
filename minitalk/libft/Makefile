@@ -1,10 +1,8 @@
-DIRPRINT = ./srcs/printf/
+DIRPRINT = ./printf/
 
-DIRGNL = ./srcs/get_next_line/
+DIRINCS = ../includes/
 
-DIRINCS = ./includes/
-
-DIRLIB = ./srcs/libft/
+DIRLIB = ./libft/
 
 SRC =	ft_memset \
 		ft_bzero \
@@ -50,9 +48,6 @@ SRC =	ft_memset \
 		ft_lstiter \
 		ft_lstmap \
 
-GNL =	get_next_line_bonus \
-		get_next_line_utils \
-
 PRINT = ft_printf \
 		token_utils \
 		print_c \
@@ -64,9 +59,8 @@ PRINT = ft_printf \
 		print_p \
 		print_x \
 
-SRCS =	$(addprefix ${DIRLIB}, $(addsuffix .c, ${SRC}))		\
-		$(addprefix ${DIRGNL}, $(addsuffix .c, ${GNL}))		\
-		$(addprefix ${DIRPRINT}, $(addsuffix .c, ${PRINT}))	\
+SRCS =	$(addprefix ${DIRLIB}, $(addsuffix .c, ${SRC}))	\
+		$(addprefix ${DIRPRINT}, $(addsuffix .c, ${PRINT})) \
 
 OBJS = $(SRCS:.c=.o)
 

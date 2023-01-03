@@ -1,39 +1,34 @@
+DIRLIB = ./libft
 
-DIRSRC = ./srcs/
+DIRINC = ./includes
 
-DIRINCS = ./includes/
-
-DIRLIB = ./libft/
-
-SRC = server.c \
-      client.c \
-
-SRCS = $(addprefix ${DIRSRC}, $(addsuffix .c, ${SRC}))
-
-OBJS = $(SRCS:.c=.o)
+SRC_S = srcs/server.c
+      
+SRC_C = srcs/client.c
 
 NAME = minitalk.a
 NAMELIBFT = libft.a
-CFLAGS = -Wall -Wextra -Werror -I $(DIRINCS)
+CFLAGS = -Wall -Wextra -Werror -I $(DIRINC)
 CC = cc
 LIBC = ar rc
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C $(DIRLIB)
-	cp $(DIRLIB)/$(NAMELIBFT) $(NAME)
-	$(LIBC) $(NAME) $(OBJS)
+$(NAMELIBFT):
+	make all -C $(DIRLIB)
+
+$(NAME): $(NAMELIBFT)
+	$(CC) $(CFLAGS) $(SRC_C) libft/libft.a -o client
+	$(CC) $(CFLAGS) $(SRC_S) libft/libft.a -o server
 
 bonus: $(NAME)
 
 clean:
 	make clean -C $(DIRLIB)
-	$(RM) $(OBJS)
 
 fclean: clean
 	make fclean -C $(DIRLIB)
-	$(RM) $(NAME)
+	$(RM) client server
 
 re: fclean all
