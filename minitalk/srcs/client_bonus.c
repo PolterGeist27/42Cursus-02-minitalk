@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:29:11 by diogmart          #+#    #+#             */
-/*   Updated: 2023/01/04 11:22:01 by diogmart         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:44:02 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	validate_input(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	int	pid;
+	int					pid;
 	struct sigaction	action;
 
 	if (validate_input(argc, argv) != 1)
