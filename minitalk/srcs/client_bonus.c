@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 09:35:14 by diogmart          #+#    #+#             */
-/*   Updated: 2023/01/04 10:41:01 by diogmart         ###   ########.fr       */
+/*   Created: 2023/01/04 10:29:11 by diogmart          #+#    #+#             */
+/*   Updated: 2023/01/04 11:22:01 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 // Function that sends a string, bit by bit
-// treating SIGUSR1 as '1' and SIGUSR2 as '0'
+// treating SIGUSR1 as '1' and SIGUSR2 as '0';
 
 void	send_message(int pid, char *message)
 {
@@ -38,6 +38,26 @@ void	send_message(int pid, char *message)
 		}
 		i++;
 	}
+}
+
+void	send_null(int pid)
+{
+	int	j;
+
+	j = 0;
+	while (j < 8)
+	{
+		kill(pid, SIGUSR2);
+		usleep(200);
+		j++;
+	}
+}
+
+void	handler(int sig)
+{
+	if (sig == SIGUSR2)
+		ft_printf("Message received!\n");
+	exit(0);
 }
 
 int	validate_input(int argc, char **argv)
@@ -65,11 +85,19 @@ int	validate_input(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	int	pid;
+	struct sigaction	action;
 
 	if (validate_input(argc, argv) != 1)
 		return (0);
 	pid = ft_atoi(argv[1]);
+	action.sa_flags = 0;
+	action.sa_handler = &handler;
+	sigemptyset(&action.sa_mask);
+	sigaction(SIGUSR2, &action, NULL);
 	send_message(pid, argv[2]);
 	send_message(pid, "\n");
+	send_null(pid);
+	while (1)
+		pause();
 	return (0);
 }

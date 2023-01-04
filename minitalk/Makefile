@@ -6,6 +6,10 @@ SRC_S = srcs/server.c
       
 SRC_C = srcs/client.c
 
+BNSSRC_S = srcs/server_bonus.c
+      
+BNSSRC_C = srcs/client_bonus.c
+
 NAME = minitalk.a
 NAMELIBFT = libft.a
 CFLAGS = -Wall -Wextra -Werror -I $(DIRINC)
@@ -22,8 +26,9 @@ $(NAME): $(NAMELIBFT)
 	$(CC) $(CFLAGS) $(SRC_C) libft/libft.a -o client
 	$(CC) $(CFLAGS) $(SRC_S) libft/libft.a -o server
 
-bonus: $(NAME)
-
+bonus: $(NAMELIBFT)
+	$(CC) $(CFLAGS) $(BNSSRC_C) libft/libft.a -o client
+	$(CC) $(CFLAGS) $(BNSSRC_S) libft/libft.a -o server
 clean:
 	make clean -C $(DIRLIB)
 
